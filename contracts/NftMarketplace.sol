@@ -149,10 +149,6 @@ contract NftMarketplace is ReentrancyGuard {
         // isNotOwner(nftAddress, tokenId, msg.sender)
         nonReentrant
     {
-        // Challenge - How would you refactor this contract to take:
-        // 1. Abitrary tokens as payment? (HINT - Chainlink Price Feeds!)
-        // 2. Be able to set prices in other currencies?
-        // 3. Tweet me @PatrickAlphaC if you come up with a solution!
         Listing memory listedItem = s_listings[nftAddress][tokenId];
         if (msg.value < listedItem.price) {
             revert PriceNotMet(nftAddress, tokenId, listedItem.price);
